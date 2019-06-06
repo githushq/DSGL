@@ -7,7 +7,8 @@ import Home from '../components/home/home.vue'
 import Users from '../components/home/layout/users/users.vue'
 import Roles from "../components/home/roles/roles.vue"
 import Rights from "../components/home/rights/rights.vue"
-
+import Categories from "../components/home/categories/categories.vue"
+import Goods from "../components/goods/goods.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -21,7 +22,9 @@ export default new Router({
     children:[
       {path:"/users",name:"users",component:Users},
       {path:"/roles",name:"roles",component:Roles},
-      {path:"/rights",name:"rights",component:Rights}
+      {path:"/rights",name:"rights",component:Rights},
+      {path:"/categories",name:"categories",component:Categories},
+      {path:"/goods",name:"goods",component:Goods}
     ]
    } // home 的路由
   ]

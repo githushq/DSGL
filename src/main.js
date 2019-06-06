@@ -9,8 +9,10 @@ import App from './App'
 import router from './router'
 // 引入 axios 
 import myaxios from './assets/js/myaxios.js'
+import mymoment from "./assets/js/moment.js"
 // 调用方法 use
 Vue.use(myaxios)
+Vue.use(mymoment)
 // 引入全局样式
 import './assets/css/index.css'
 Vue.use(ElementUI)

@@ -5,19 +5,18 @@
     background-color="#fff"
     text-color="#444"
     :unique-opened="true"
-    :router="true"
-  >
-    <el-submenu index="1">
+    :router="true" >
+    <el-submenu v-for="(item1,index1) in menusList" :key="index1" :index="item1.path">
       <template slot="title">
         <i class="el-icon-location"></i>
-        <span>用户管理</span>
+        <span>{{item1.authName}}</span>
       </template>
-      <el-menu-item index="/users">
+      <el-menu-item v-for="(item2,index2) in item1.children" :key="index2" :index="item2.path">
         <i class="el-icon-menu"></i>
-        <span>用户列表</span>
+        <span>{{item2.authName}}</span>
       </el-menu-item>
     </el-submenu>
-    <el-submenu index="2">
+    <!-- <el-submenu index="2">
       <template slot="title">
         <i class="el-icon-location"></i>
         <span>权限管理</span>
@@ -66,14 +65,39 @@
       </template>
       <el-menu-item index>
         <i class="el-icon-menu"></i>
-        <span>数据报表</span>
-      </el-menu-item>
-    </el-submenu>
+        <span>数据报表</span> -
+       </el-menu-item>
+    </el-submenu> -->
   </el-menu>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      menusList:[]
+    }
+  },
+  // 动态生成侧边栏
+  methods:{
+    async getMenusList(){
+      let res = await this.$http.get('menus')
+      // 解构
+      let {meta,data}= res.data
+      if(meta.status === 200){
+        this.menusList = data
+        console.log(this.munusList);
+        
+      }else{
+        this.$message.error(meta.msg)
+      }
+    }
+    
+  },
+  mounted(){
+    this.getMenusList()
+  }
+};
 </script>
 
 <style>

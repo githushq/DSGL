@@ -310,7 +310,7 @@ export default {
     async getOpetions() {
       let res = await this.$http.get("roles", {
         // headers: {
-        //   authorization: localStorage.getItem("token")
+        //   authorization: localStor`age.getItem("token")
         // }
       });
       // 解构

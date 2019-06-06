@@ -1,6 +1,4 @@
 // 自己封装的一个 axios 插件
-// 导入 Vue 
-import Vue from 'vue'
 // 导入 axios
 import axios from 'axios'
 // 创建插件对象
@@ -16,7 +14,7 @@ axios.interceptors.request.use(config=>{
     }
     return config
 })
-    
+
     // 给 Vue 实例对象添加方法
     Vue.prototype.$http = axios
 }
